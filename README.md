@@ -51,8 +51,21 @@ Ideally, if several teams work in similar tech staks, you can consider using hea
 ![](img/pipeline.gif)
 
 ## Observability
-Infra
 
+ELK Stack:
+
+Instana: health and performance metrics (KPIs) are important indicators to the overall state of the k8s environment
+Grafana: Dashboard of use from resource of cluster of Kubernetes
+
+We need to monitor the performance of our clusters: 
++ State of containers from Cluster.
++ State of Pods from Cluster.
++ State of Jobs from Cluster.
++ Deployment and ReplicationController state of Cluster.
++ Nodes number and state of they
++ Network Activity by namespaces.
++ CPU use in the cluster and CPU use in the cluster by namespaces.
++ Ram memory use in the cluster and Ram memory use in the cluster by namespaces.
 
 ## Availability
 
