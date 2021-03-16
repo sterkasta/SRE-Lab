@@ -4,6 +4,15 @@ Let’s image that a new application is being developed and you are part of the 
 
 ## Design
 
+I will desing a cloud solution based on AWS. The first decission would be to move to an IaaS or SaaS solution, depend on that we will use ec2 machines or EKS as our platform. I think for a better control of our environments would be better to move to an IaaS solution. In order of that we can deploy our cluster on an ec2 machines. We can automate our infraestructure deploys using an infraestructure as code tool. Terraform is fully integrated with AWS. 
+
+Terraform on AWS Best Practices:
+https://medium.com/xebia-engineering/best-practices-to-create-organize-terraform-code-for-aws-2f4162525a1a
+
+We will deploy our k8s clusters in ec2 in order to admin our apps. 
+
+
+
 ![](img/Infra%20Diagram.png)
 
 
