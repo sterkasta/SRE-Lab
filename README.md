@@ -4,12 +4,12 @@ Let’s image that a new application is being developed and you are part of the 
 
 ## Design
 
-I will desing a cloud solution based on AWS. The first decission would be to move to an IaaS or SaaS solution, depend on that we will use ec2 machines or EKS as our platform. I think for a better control of our environments would be better to move to an IaaS solution. In order of that we can deploy our cluster on an ec2 machines. We can automate our infraestructure deploys using an infraestructure as code tool. Terraform is fully integrated with AWS. 
+We will desing a cloud solution based on AWS. The first decission would be to move to an IaaS or SaaS solution, depend on that we will use ec2 machines or EKS as our platform. I think for a better control of our environments would be better to move to an IaaS solution. In order of that we can deploy our cluster on an ec2 machines. We can automate our infraestructure deploys using an infraestructure as code tool. Terraform is fully integrated with AWS. 
 
 Terraform on AWS Best Practices:
 https://medium.com/xebia-engineering/best-practices-to-create-organize-terraform-code-for-aws-2f4162525a1a
 
-I will deploy our k8s clusters in ec2 in order to admin our apps. We need to design our environments at the logic level. So we will define our cluster in order of they usability. We need to deploy inside our k8s:
+We will deploy our k8s clusters in ec2 in order to admin our apps. We need to design our environments at the logic level. So we will define our cluster in order of they usability. We need to deploy inside our k8s:
 + Jenkins cluster to manage the CD/CI integration
 + Observability cluster to monitoring our platform
 + Apps cluster by usability (for example: frontal vs backend, ml/ia, etc)
@@ -31,7 +31,18 @@ https://nearsoft.com/blog/how-to-get-jenkins-to-execute-builds-automatically-wit
 
 ![](img/Webhook%20Config.jpeg)
 
+Once we have our web hook configured, we need to create our pipeline to automatize the process. We can create differente stages in our automatization process in order to verified the code is it suitable to move to the next environment. We have defined the next stages:
 
++ Initializate
++ Build
++ Code Coverage
++ Regression Test
++ Security Code Scan
++ Container Vulnerabilities
++ Container Registry
++ Deployment
+
+This stages could be processes developed for other teams in other to guarantiee the move of the app between environments. 
 
 ![](img/Jenkins%20Build.png)
 
@@ -45,21 +56,35 @@ Infra
 
 ## Availability
 
-How to configure K8s + CDN (Akamai), load balancers 
+K8s provides us tools to create an HA infraestructure in order to offer to our customer SLAs:
++ Creating a MultiMaster Cluster
++ Creating a Load Balancer to distribute the load between nodes
++ External etcd nodes 
 
-helm
+https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/high-availability/
+
+! In order to improve the HA on K8S there is other products like Openshift that has implemented this labe using HA Proxy in order to facilite the maintance of the solution.
+
+
+Akamaai: 
+CDN providers minimize user access time for your service by caching static content across their points of presence (PoPs) worldwide. These PoPs consist of several edge servers providing cached content to users requesting static assets like images. If a requested asset is not found, the edge server pulls the asset, either from the origin server (i.e your server), or from nearby edge servers. This setup improves the UX for geographically distributed users as they see reduced latencies and packet loss.
+
+https://blog.insightdatascience.com/how-to-build-your-own-cdn-with-kubernetes-5cab00d5c258
+
+Helm: 
+
+Helm is a tool that streamlines installing and managing Kubernetes applications. Think of it like apt/yum/homebrew for Kubernetes.
+
++ Helm renders your templates and communicates with the Kubernetes API
++ Helm runs on your laptop, CI/CD, or wherever you want it to run.
++ Charts are Helm packages that contain at least two things:
++ A description of the package (Chart.yaml)
++ One or more templates, which contain Kubernetes manifest files
++ Charts can be stored on disk, or fetched from remote chart repositories (like Debian or RedHat packages)
+
+https://github.com/helm/helm
 
 kustomize
-
-ejemplo kubernetes config 
-
-configmap by environment
-ingress deployment service & HPA
-
-
-Personal experience with Openshift, solving proxy and traffic limitations of K8s 
-
-
 
 ## Trade offs 
 
