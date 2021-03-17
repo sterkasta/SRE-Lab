@@ -46,6 +46,10 @@ This stages could be processes developed for other teams in other to guarantiee 
 
 ![](img/Jenkins%20Build.png)
 
+To check this we implemented a small jenkins pipeline on node.js 
+
+(Setup/Jenkins/Jenkinsfile)
+
 Ideally, if several teams work in similar tech staks, you can consider using heavy customizable tempaltes for pipelines, or creating Jenkins libraries and plugins, based on the DSL as example. 
 
 ![](img/pipeline.gif)
