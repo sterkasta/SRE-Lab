@@ -52,10 +52,19 @@ Ideally, if several teams work in similar tech staks, you can consider using hea
 
 ## Observability
 
+You need tools to monitor your infraestructure in order to prevent issues. 
+
 ELK Stack:
 
-Instana: health and performance metrics (KPIs) are important indicators to the overall state of the k8s environment
-Grafana: Dashboard of use from resource of cluster of Kubernetes
+Instana: 
+Will help you to monitor health and performance metrics (KPIs) to the overall state of the k8s environment
+You need to install the host agent in k8s
+https://www.instana.com/docs/setup_and_manage/host_agent/on/kubernetes/
+
+Grafana: 
+Will help you to see easily with dashboard of use from resource of cluster of Kubernetes
+You need to install the grafana agent 
+https://grafana.com/docs/grafana-cloud/quickstart/agent_k8s/
 
 We need to monitor the performance of our clusters: 
 + State of containers from Cluster.
@@ -97,9 +106,10 @@ Helm is a tool that streamlines installing and managing Kubernetes applications.
 
 https://github.com/helm/helm
 
-kustomize
 
 ## Trade offs 
 
-A lot of hands needed
+You need to know how many resources do you have in your team. This will help you to decide if you want an IaaS solution or SaaS solution. 
+If you decice to choose an IaaS solution you will need differents teams to deploy de solution. 
+You need to know how your infraestructura will grow in time to provision costs. 
 
