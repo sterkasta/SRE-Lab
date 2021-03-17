@@ -17,7 +17,7 @@ We will deploy our k8s clusters in ec2 in order to admin our apps. We need to de
 
 We will need an external container image registry to help us to deploy on K8s. For example: [Harbor](https://aws.amazon.com/marketplace/pp/Bitnami-Harbor-Registry-Container-Solution/B07YWDQ9Q5)
 
-![](img/Infra%20Diagram.png)
+![Infrastructure Diagram](img/Infra%20Diagram.png)
 
 
 ## Pipeline
@@ -26,7 +26,7 @@ To automatize the update changes on our apps using our infra, we need to configu
 
 [webhook](https://nearsoft.com/blog/how-to-get-jenkins-to-execute-builds-automatically-with-github/#:~:text=The%20Github%20Integration%20plugin%20will,polling%20login%20you%20previously%20defined.)
 
-![](img/Webhook%20Config.jpeg)
+![Webhook Configuration](img/Webhook%20Config.jpeg)
 
 Once we have our web hook configured, we need to create our pipeline to automatize the process. We can create differente stages in our automatization process in order to verified the code is it suitable to move to the next environment. We have defined the next stages:
 
@@ -41,7 +41,7 @@ Once we have our web hook configured, we need to create our pipeline to automati
 
 This stages could be processes developed for other teams in other to guarantiee the move of the app between environments. 
 
-![](img/Jenkins%20Build.png)
+![Jenkins Build](img/Jenkins%20Build.png)
 
 To check this we implemented a small jenkins pipeline on node.js 
 
@@ -49,17 +49,22 @@ To check this we implemented a small jenkins pipeline on node.js
 
 Ideally, if several teams work in similar tech staks, you can consider using heavy customizable tempaltes for pipelines, or creating Jenkins libraries and plugins, based on the DSL as example. 
 
-![](img/pipeline.gif)
+![Pipeline Showcase](img/pipeline.gif)
 
 ## Observability
 
-You need tools to monitor your infraestructure in order to prevent issues. 
+You need tools to monitor your infraestructure in order to prevent issues.
+To accomplish this goal, we'd suggest the following approach to cover both application logs and microservice health:
 
 ELK Stack:
+Will help you analyse your application logs, but it will require routing the deployment logs to their stack.
+you need to create a elastic cluster inside the k8s cluster
+[elastic cluster](https://www.elastic.co/guide/en/cloud-on-k8s/master/k8s-deploy-elasticsearch.html)
+
 
 Instana: 
-Will help you to monitor health and performance metrics (KPIs) to the overall state of the k8s environment
-You need to install the host agent in k8s
+Will help you to monitor health and performance metrics (KPIs) to the overall state of the k8s environment.
+You need to install the host agent in k8s cluster.
 [instana agent](https://www.instana.com/docs/setup_and_manage/host_agent/on/kubernetes/)
 
 Grafana: 
@@ -90,7 +95,7 @@ K8s provides us tools to create an HA infraestructure in order to offer to our c
 
 [Openshift](https://www.redhat.com/en/topics/containers/red-hat-openshift-kubernetes)
 
-Akamaai: 
+Akamai: 
 CDN providers minimize user access time for your service by caching static content across their points of presence (PoPs) worldwide. These PoPs consist of several edge servers providing cached content to users requesting static assets like images. If a requested asset is not found, the edge server pulls the asset, either from the origin server (i.e your server), or from nearby edge servers. This setup improves the UX for geographically distributed users as they see reduced latencies and packet loss.
 
 [Build Your Own CDN with k8s](https://blog.insightdatascience.com/how-to-build-your-own-cdn-with-kubernetes-5cab00d5c258)
