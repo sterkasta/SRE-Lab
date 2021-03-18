@@ -2,6 +2,8 @@
 
 Let’s image that a new application is being developed and you are part of the SRE team where your task to take care of the continuous integration and continuous deployment pipeline as well as make the application ready for responding to a high demand.
 
+! This is a personal opinion based on a challenge. It would be interesting to have an open discussion to review other opinions or alternatives.
+
 ## Design
 
 We will desing a cloud solution based on AWS. The first decission would be to move to an IaaS or SaaS solution, depend on that we will use ec2 machines or EKS as our platform. I think for a better control of our environments would be better to move to an IaaS solution. In order of that we can deploy our cluster on an ec2 machines. We can automate our infraestructure deploys using an infraestructure as code tool. Terraform is fully integrated with AWS. 
